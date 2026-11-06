@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ladhidh Cloud Kitchen | Authentic Homemade Delicacies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #1e3a5f;
+      --primary-dark: #12243b;
+      --accent: #c49746;
+      --accent-light: #f7eedd;
+      --bg-cream: #faf7f2;
+      --card-bg: #ffffff;
+      --text-dark: #23272e;
+      --text-muted: #6b7280;
+      --border-color: #eeddc7;
+      --green-veg: #1b8a3b;
+      --red-nonveg: #b91c1c;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-bottom: 90px;
+    }
+
+    /* Header & Hero */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 45px 20px 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .brand-logo {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(3.2rem, 8vw, 4.8rem);
+      color: #f7dfa5;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .brand-tagline {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .notice-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pill i { color: var(--accent); }
+
+    /* Quick Contact Bar */
+    .contact-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-bar .chef {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .contact-bar .btn-contact {
+      color: #fff;
+      background: var(--primary);
+      text-decoration: none;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-bar .btn-contact.whatsapp-btn {
+      background: #25d366;
+    }
+
+    .contact-bar .btn-contact:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 25px 18px;
+    }
+
+    /* Search & Filter Section */
+    .controls-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--bg-cream);
+      padding: 14px 0 10px;
+    }
+
+    .search-box {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 20px 14px 44px;
+      border-radius: 30px;
+      border: 1px solid var(--border-color);
+      background: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(196,151,70,0.18);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    /* Tabs */
+    .category-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+    .category-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      white-space: nowrap;
+      padding: 9px 18px;
+      border-radius: 25px;
+      border: 1px solid var(--border-color);
+      background: #fff;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Section Headers */
+    .menu-section {
+      margin-top: 30px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      font-weight: normal;
+      color: var(--text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Dish Cards Grid */
+    .dishes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 16px;
+    }
+
+    .dish-card {
+      background: var(--card-bg);
+      border: 1px solid #ebd9c3;
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .dish-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .dish-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .dish-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+      line-height: 1.35;
+    }
+
+    .diet-indicator {
+      width: 14px;
+      height: 14px;
+      border: 1px solid;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .diet-indicator.veg {
+      border-color: var(--green-veg);
+    }
+    .diet-indicator.veg::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--green-veg);
+      border-radius: 50%;
+    }
+
+    .diet-indicator.nonveg {
+      border-color: var(--red-nonveg);
+    }
+    .diet-indicator.nonveg::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--red-nonveg);
+      border-radius: 50%;
+    }
+
+    .dish-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .dish-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px dashed #ebd9c3;
+    }
+
+    .dish-price {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .dish-unit {
+      font-size: 0.78rem;
+      font-weight: normal;
+      color: var(--text-muted);
+    }
+
+    .btn-add {
+      background: var(--accent-light);
+      color: var(--primary);
+      border: 1px solid var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-add:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .special-note-box {
+      background: #fff8ed;
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      color: #8c5b1b;
+    }
+
+    /* Cart Floating Bar */
+    .cart-float-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 36px);
+      max-width: 650px;
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      z-index: 100;
+      display: none;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translate(-50%, 100%); }
+      to { transform: translate(-50%, 0); }
+    }
+
+    .cart-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    .cart-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .cart-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-whatsapp-order {
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      background: #111e2e;
+      color: #cbd5e1;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer h3 {
+      font-family: 'Playfair Display', serif;
+      color: #f7dfa5;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 15px auto 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand-logo">Ladhidh</div>
+    <div class="brand-tagline">Authentic Homemade Delicacies & Cloud Kitchen</div>
+    <div class="notice-pills">
+      <span class="pill"><i class="fa-solid fa-clock"></i> Place orders 24h in advance</span>
+      <span class="pill"><i class="fa-solid fa-truck"></i> Mumbai • Navi Mumbai • Thane</span>
+      <span class="pill"><i class="fa-solid fa-utensils"></i> Freshly Prepared To Order</span>
+    </div>
+  </header>
+
+  <!-- Contact Bar -->
+  <div class="contact-bar">
+    <span class="chef"><i class="fa-solid fa-user-check"></i> Nazia Chougle</span>
+    <a href="tel:8879409259" class="btn-contact"><i class="fa-solid fa-phone"></i> 8879409259</a>
+    <a href="tel:8879219742" class="btn-contact"><i class="fa-solid fa-phone"></i> 8879219742</a>
+    <a href="https://wa.me/918879409259?text=Hello%20Nazia,%20I%20would%20like%20to%20place%20an%20order%20from%20Ladhidh." target="_blank" class="btn-contact whatsapp-btn">
+      <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+    </a>
+  </div>
+
+  <div class="container">
+
+    <!-- Search & Tabs -->
+    <div class="controls-wrapper">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search delicious dishes (e.g., Samosa, Haleem, Dum Biryani)..." onkeyup="filterMenu()">
+      </div>
+
+      <div class="category-tabs">
+        <button class="tab-btn active" onclick="switchCategory('all')">All Delicacies</button>
+        <button class="tab-btn" onclick="switchCategory('starters-piece')">Starters (Piece)</button>
+        <button class="tab-btn" onclick="switchCategory('starters-dozen')">Ready to Fry (Dozen)</button>
+        <button class="tab-btn" onclick="switchCategory('main-portion')">Biryani & Portions (350/500ml)</button>
+        <button class="tab-btn" onclick="switchCategory('main-kg')">Main Course (Per Kg)</button>
+        <button class="tab-btn" onclick="switchCategory('chinese')">Chinese (Per Kg)</button>
+        <button class="tab-btn" onclick="switchCategory('tiffin')">Homemade Tiffin</button>
+      </div>
+    </div>
+
+    <!-- 1. STARTERS (PER PIECE) -->
+    <section class="menu-section" data-cat="starters-piece">
+      <div class="section-title">
+        <span>Starters (Per Piece / Per Portion)</span>
+        <span class="section-subtitle">Freshly handmade & fried/prepared to order</span>
+      </div>
+      <div class="dishes-grid" id="grid-starters-piece">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- 2. STARTERS (PER DOZEN) -->
+    <section class="menu-section" data-cat="starters-dozen">
+      <div class="section-title">
+        <span>Ready to Fry / Ready to Eat (Per Dozen)</span>
+        <span class="section-subtitle">Prices per dozen (12 pcs) unless specified</span>
+      </div>
+      <div class="special-note-box">
+        <i class="fa-solid fa-circle-info"></i> <strong>Note:</strong> Minimum order is 6 pieces for dozen items (6 sticks for stick items; 10 pcs for Crispy Chicken Fingers).<br>
+        <strong>Want them fried or grilled?</strong> Extra ₹30 for 6 pcs / sticks, ₹50 for 12 pcs / sticks.
+      </div>
+      <div class="dishes-grid" id="grid-starters-dozen">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- 3. PORTION MENU (350ml & 500ml) -->
+    <section class="menu-section" data-cat="main-portion">
+      <div class="section-title">
+        <span>Portion Menu (Haleem, Khichda, Biryani & Combos)</span>
+        <span class="section-subtitle">Min order: 2 portions</span>
+      </div>
+      <div class="dishes-grid" id="grid-main-portion">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- 4. MAIN COURSE (PER KG) -->
+    <section class="menu-section" data-cat="main-kg">
+      <div class="section-title">
+        <span>Main Course Gravies & Curries</span>
+        <span class="section-subtitle">Priced per kg • Minimum order: ½ kg</span>
+      </div>
+      <div class="special-note-box">
+        <i class="fa-solid fa-star"></i> Chicken or Mutton dishes made boneless / without bones: extra ₹100.
+      </div>
+      <div class="dishes-grid" id="grid-main-kg">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- 5. CHINESE (PER KG) -->
+    <section class="menu-section" data-cat="chinese">
+      <div class="section-title">
+        <span>Chinese Special</span>
+        <span class="section-subtitle">Priced per kg • Minimum order: ½ kg</span>
+      </div>
+      <div class="dishes-grid" id="grid-chinese">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- 6. TIFFIN -->
+    <section class="menu-section" data-cat="tiffin">
+      <div class="section-title">
+        <span>Homemade Daily Tiffin Meals</span>
+        <span class="section-subtitle">Wholesome homestyle balanced meals • Pre-booking only</span>
+      </div>
+      <div class="dishes-grid" id="grid-tiffin">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Floating Cart / WhatsApp Order Bar -->
+  <div class="cart-float-bar" id="cartFloatBar">
+    <div class="cart-info">
+      <span class="cart-badge" id="cartCount">0 Items</span>
+      <span id="cartSummary">Order list ready</span>
+    </div>
+    <div class="cart-actions">
+      <button class="btn-whatsapp-order" onclick="sendWhatsAppOrder()">
+        <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <h3>Ladhidh Cloud Kitchen</h3>
+    <p>Authentic taste, high hygiene standards, prepared fresh in our kitchen with pure love.</p>
+    <div class="footer-links">
+      <a href="tel:8879409259"><i class="fa-solid fa-phone"></i> 8879409259</a>
+      <a href="tel:8879219742"><i class="fa-solid fa-phone"></i> 8879219742</a>
+    </div>
+    <p class="footer-note">
+      * Delivery anywhere in Mumbai, Navi Mumbai and Thane. Delivery charges apply as per location.<br>
+      * All orders are to be placed at least 24 hours in advance to ensure the highest quality and timely preparation.
+    </p>
+  </footer>
+
+  <script>
+    // Menu Data directly from your PDF
+    const menuData = {
+      "starters-piece": [
+        { name: "Aloo Kheema Cutlet (Chicken)", price: "₹25", unit: "/ piece", type: "nonveg" },
+        { name: "Chicken Spring Roll", price: "₹30", unit: "/ piece", type: "nonveg" },
+        { name: "Chicken Samosa", price: "₹35", unit: "/ piece", type: "nonveg" },
+        { name: "Chinese Samosa", price: "₹30", unit: "/ piece", type: "nonveg" },
+        { name: "Chutney Kebab", price: "₹30", unit: "/ piece", type: "nonveg" },
+        { name: "Resha Kebab", price: "₹30", unit: "/ piece", type: "nonveg" },
+        { name: "Russian Cutlet", price: "₹35", unit: "/ piece", type: "nonveg" },
+        { name: "Chutney Cheese Kebab", price: "₹35", unit: "/ piece", type: "nonveg" },
+        { name: "Shahi Roll", price: "₹40", unit: "/ piece", type: "nonveg" },
+        { name: "Box Pattice", price: "₹45", unit: "/ piece", type: "nonveg" },
+        { name: "Chicken Quesadilla", price: "₹150", unit: "", type: "nonveg" },
+        { name: "Chicken Tikka Sticks", price: "₹40", unit: "/ piece", type: "nonveg" },
+        { name: "Chicken Malai Sticks", price: "₹50", unit: "/ piece", type: "nonveg" },
+        { name: "Chicken Pizza Pockets", price: "₹50", unit: "/ piece", type: "nonveg" },
+        { name: "Chicken Pizza", price: "₹150", unit: "", type: "nonveg" },
+        { name: "Chicken Popcorn", price: "₹150", unit: "", type: "nonveg" },
+        { name: "Egg Chicken Cheese Roll", price: "₹150", unit: "", type: "nonveg" },
+        { name: "Tender Bites (8 pcs)", price: "₹200", unit: "/ 8 pcs", type: "nonveg" },
+        { name: "Crispy Chicken with Honey Garlic Sauce (4 pcs)", price: "₹200", unit: "/ 4 pcs", type: "nonveg" },
+        { name: "Mutton Aloo Kheema Cutlet", price: "₹40", unit: "/ piece", type: "nonveg" },
+        { name: "Kache Kheema Kebab (Mutton)", price: "₹500", unit: "/ dozen", type: "nonveg" },
+        { name: "Mutton Kheema Samosa", price: "₹50", unit: "/ piece", type: "nonveg" },
+        { name: "Mutton Shaami Kebab", price: "₹45", unit: "/ piece", type: "nonveg" }
+      ],
+      "starters-dozen": [
+        { name: "Chicken Cheese Cutlet", price: "₹480", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Aloo Keema Cutlet", price: "₹300", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Keema Samosa", price: "₹420", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Cheese Corn Samosa", price: "₹420", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Chinese Samosa", price: "₹360", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Chutney Kebab", price: "₹360", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Chutney Cheese Kebab", price: "₹420", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Chinese Cutlet", price: "₹360", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Russian Cutlet", price: "₹420", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Cheese Russian Cutlet", price: "₹480", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Shaami Kebab", price: "₹420", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Bohri Cutlet", price: "₹420", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Resha Kebab", price: "₹360", unit: "/ dozen", type: "nonveg" },
+        { name: "Chicken Cheese K
